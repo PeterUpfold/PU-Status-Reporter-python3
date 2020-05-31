@@ -1,0 +1,4 @@
+*.swp
+volatile/
+.DS_Store
+__pycache__/
