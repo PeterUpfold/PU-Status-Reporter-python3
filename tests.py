@@ -46,7 +46,13 @@ class TestReporter(unittest.TestCase):
         config = self.get_config()
         self.assertTrue('bearer_key' in config, msg='There was no bearer_key fetched from the config JSON')
 
-        reporter.set_status('harald_le_success', 'pytest', config['bearer_key'])
+        self.assertTrue('context_to_set' in config, msg='There is no context_to_set fetched from config JSON')
+        self.assertTrue('payload_for_context_to_set' in config, msg='There is no payload_for_context_to_set in the config JSON')
+
+        reporter.set_status(config['context_to_set'], config['payload_for_context_to_set'], config['bearer_key'])
+
+        # now go get the context and check that it set
+        
 
 if __name__ == '__main__':
     unittest.main()
