@@ -52,6 +52,8 @@ class TestReporter(unittest.TestCase):
         reporter.set_status(config['context_to_set'], config['payload_for_context_to_set'], config['bearer_key'])
 
         # now go get the context and check that it set
+        payload_set = reporter.get_status(config['context_to_set'], config['bearer_key'])
+        self.assertEqual(payload_set['payload'], config['payload_for_context_to_set'])
         
 
 if __name__ == '__main__':
